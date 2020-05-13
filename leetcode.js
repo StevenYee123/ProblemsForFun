@@ -85,19 +85,49 @@ const lengthOfLongestSubstring = function(s) {
 
 // console.log(removeDuplicates([1,1,2]));
 
-function bSearch(arr, target) {
-    if (arr.length <= 1 && arr[0] !== target) return null;
-    const mid = Math.floor(arr.length / 2);
-    if (arr[mid] === target) return mid;
+// ############################################################################################################
 
-    if (target < arr[mid]) {
-        return bSearch(arr.slice(0, mid), target);
-    } else {
-        let rightSearch = bSearch(arr.slice(mid + 1), target);
-        return rightSearch === null ? null : mid + rightSearch + 1;
+// function bSearch(arr, target) {
+//     if (arr.length <= 1 && arr[0] !== target) return null;
+//     const mid = Math.floor(arr.length / 2);
+//     if (arr[mid] === target) return mid;
+
+//     if (target < arr[mid]) {
+//         return bSearch(arr.slice(0, mid), target);
+//     } else {
+//         let rightSearch = bSearch(arr.slice(mid + 1), target);
+//         return rightSearch === null ? null : mid + rightSearch + 1;
+//     }
+// }
+
+// arr = [1,2,3,4,5,6];
+// target = 8;
+// console.log(bSearch(arr, target));
+
+// ############################################################################################################
+
+var longestCommonPrefix = function(strs) {
+    let commonPrefix = "";
+    let shortestWord = strs[0];
+    strs.forEach((word) => {
+        if(word.length < shortestWord.length) {
+            shortestWord = word;
+        }
+    });
+
+    for (let i = 0; i <= shortestWord.length; i++){
+        const isCommonPrefix = strs.every((word) => {
+            return word.slice(0, i) === shortestWord.slice(0, i);
+        });
+        
+        if (isCommonPrefix) {
+            commonPrefix = shortestWord.slice(0, i);
+        } else {
+            break;
+        }
     }
-}
+    
+    return commonPrefix;
+};
 
-arr = [1,2,3,4,5,6];
-target = 8;
-console.log(bSearch(arr, target));
+console.log(longestCommonPrefix(["flowers", "flow"]));
