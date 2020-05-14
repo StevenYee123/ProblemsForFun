@@ -106,28 +106,45 @@ const lengthOfLongestSubstring = function(s) {
 
 // ############################################################################################################
 
-var longestCommonPrefix = function(strs) {
-    let commonPrefix = "";
-    let shortestWord = strs[0];
-    strs.forEach((word) => {
-        if(word.length < shortestWord.length) {
-            shortestWord = word;
-        }
-    });
+// var longestCommonPrefix = function(strs) {
+//     let commonPrefix = "";
+//     let shortestWord = strs[0];
+//     strs.forEach((word) => {
+//         if(word.length < shortestWord.length) {
+//             shortestWord = word;
+//         }
+//     });
 
-    for (let i = 0; i <= shortestWord.length; i++){
-        const isCommonPrefix = strs.every((word) => {
-            return word.slice(0, i) === shortestWord.slice(0, i);
-        });
+//     for (let i = 0; i <= shortestWord.length; i++){
+//         const isCommonPrefix = strs.every((word) => {
+//             return word.slice(0, i) === shortestWord.slice(0, i);
+//         });
         
-        if (isCommonPrefix) {
-            commonPrefix = shortestWord.slice(0, i);
-        } else {
-            break;
-        }
-    }
+//         if (isCommonPrefix) {
+//             commonPrefix = shortestWord.slice(0, i);
+//         } else {
+//             break;
+//         }
+//     }
     
-    return commonPrefix;
+//     return commonPrefix;
+// };
+
+// console.log(longestCommonPrefix(["flowers", "flow"]));
+
+// ############################################################################################################
+
+var myPow = function(x, n) {
+    if (n === 0) return 1;
+
+    console.log("This is x right now: " + x);
+    console.log("This is pow right now: " + n);
+    
+    let pow = Math.abs(n);
+    
+	let result = pow % 2 === 0 ? myPow(x*x, pow/2) : x * myPow(x*x, (pow-1) / 2);
+    
+    return n < 0 ? 1 / result : result;
 };
 
-console.log(longestCommonPrefix(["flowers", "flow"]));
+console.log(myPow(3, 4));
