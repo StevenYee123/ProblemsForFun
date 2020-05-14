@@ -40,12 +40,6 @@ const lengthOfLongestSubstring = function(s) {
     return max_len;
 };
 
-// "abcabcbb"
-// i = 3
-// s[i] = "a"
-// size => 0
-// max_len = 3
-
 // ############################################################################################################
 
 // var isValid = function(s) {
