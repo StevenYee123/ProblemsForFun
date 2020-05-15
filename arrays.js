@@ -17,30 +17,6 @@
 
 // ############################################################################################################
 
-// var isValid = function(s) {
-//     if (!s.length) return true;
-//     const brackets = {
-//         "(" : ")",
-//         "[" : "]",
-//         "{" : "}"
-//     }
-//     let stack = [];
-    
-//     for(let i = 0; i < s.length; i++){
-//         if(brackets[s[i]] !== undefined){
-//             stack.push(s[i]);
-//         } else if (brackets[stack.pop()] != s[i]){
-//             return false;
-//         }
-//     }
-    
-//     return stack.length === 0;
-// };
-
-// console.log(isValid("()"));
-
-// ############################################################################################################
-
 // var removeDuplicates = function (nums) {
 //     let index = 1;
 //     for (let i = 0; i < nums.length - 1; i++) {
@@ -90,14 +66,55 @@
 
 // console.log(myPow(3, 4));
 
-var maxProfit = function(prices) {
-    var min = prices[0]; 
-    var max = 0;
-    for (var i = 0; i < prices.length; i++) {
-        min = Math.min(min, prices[i]);
-        max = Math.max(max, prices[i] - min);
-    }
-    return max;
-};
+// var maxProfit = function(prices) {
+//     var min = prices[0]; 
+//     var max = 0;
+//     for (var i = 0; i < prices.length; i++) {
+//         min = Math.min(min, prices[i]);
+//         max = Math.max(max, prices[i] - min);
+//     }
+//     return max;
+// };
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+// ############################################################################################################
+
+// //Kadane's algorithm. 
+
+// var maxSubArray = function(nums) {
+//     for (let i = 1; i < nums.length; i++){
+//         nums[i] = Math.max(nums[i], nums[i] + nums[i - 1]);
+//     }
+//     return Math.max(...nums);
+// };
+
+// ############################################################################################################
+
+var maxProduct = function(nums) {
+    let prevMax = nums[0];
+    let prevMin = nums[0];
+    let maxSoFar = nums[0];
+    for (let i = 1;i < nums.length; i++) {
+        // given the new number, the new maximun can have 3 conditions
+        // 1. number(+) * prevMax(+) is the largest
+        // 2. number(+) it self is the largest
+        // 3. number(-) * prevMin(-) is the largest 
+        let currentNum = nums[i];
+        curMax = Math.max(currentNum * prevMax, currentNum, currentNum * prevMin);
+        
+        curMin = Math.min(currentNum * prevMin, currentNum, currentNum * prevMax);
+
+		// updating the prevMax & prevMin, these two may swap locations
+        prevMax = curMax
+        prevMin = curMin
+
+        maxSoFar = Math.max(curMax, maxSoFar);
+
+        console.log("Current max: " + curMax);
+        console.log("Current min: " + curMin);
+        console.log("Max so far: " + maxSoFar);
+    }
+
+    return maxSoFar;
+}
+
+console.log(maxProduct([-1, 6, 2, 0, 7, 9]));
