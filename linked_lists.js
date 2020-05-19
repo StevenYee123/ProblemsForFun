@@ -15,3 +15,27 @@ var swapPairs = function(head) {
     return temp.next;
 };
 
+// var reverseList = function(head) {
+//     let prev = null;
+    
+//     while (head) {
+//         let next = head.next;
+//         head.next = prev;
+//         prev = head;
+//         head = next;
+//     }
+    
+//     return prev;
+// };
+
+// Recursive
+
+var reverseList = function(head, prev = null) {
+    if (head === null) {
+        return null;
+    }
+    const next = reverseList(head.next, head);
+    head.next = prev;
+    return next || head;
+    
+};
