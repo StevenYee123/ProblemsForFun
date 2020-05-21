@@ -117,4 +117,66 @@ var maxProduct = function(nums) {
     return maxSoFar;
 }
 
-console.log(maxProduct([-1, 6, 2, 0, 7, 9]));
+var subsets = function(nums) {
+    let result = [];
+    dfs([], 0);
+    
+    function dfs(current, index){
+        result.push(current);
+        for(let i = index; i < nums.length; i++) {
+            dfs(current.concat(nums[i]), i + 1);
+        }
+    }
+    
+    return result;
+};
+
+var plusOne = function(digits) {
+    digits[digits.length - 1] += 1;
+    let carryOver = 0;
+    
+    if (digits[digits.length - 1] !== 10){
+        return digits;
+    } else {
+        digits[digits.length - 1] = 0;
+        carryOver = 1;
+        for (let i = digits.length - 2; i >= 0; i--){
+            digits[i] += carryOver;
+            console.log(digits[i]);
+            carryOver = 0;
+            if (digits[i] === 10){
+                digits[i] = 0;
+                carryOver = 1;
+            }
+        }
+    }
+
+    carryOver === 1 ? digits.unshift(carryOver) : digits;
+
+    return digits;
+};
+
+var merge = function(nums1, m, nums2, n) {
+    let nums1Idx = 0;
+    let nums2Idx = 0;
+    let index = 0;
+    
+    while (nums1Idx < m && nums2Idx < n){
+        if (nums1[nums1Idx] >= nums2[nums2Idx]){
+            nums1[index++] = nums2[nums2Idx++];
+        } else {
+            nums1[index++] = nums1[nums1Idx++];
+        }
+        console.log(nums1);
+    }
+    
+    while (nums1Idx < m){
+        nums1[index++] = nums1[nums1Idx++];
+    } 
+    
+    while (nums2Idx < n){
+        nums2[index++] = nums2[nums2Idx++];
+    }
+};
+
+console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
