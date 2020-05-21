@@ -66,17 +66,40 @@ var strStr = function(haystack, needle) {
 
 // ############################################################################################################
 
-var strStr = function(haystack, needle) {
-    if (needle === "") return 0;
+// var strStr = function(haystack, needle) {
+//     if (needle === "") return 0;
     
-    for (let i = 0; i < haystack.length - needle.length; i++){
-        let subString = haystack.slice(i, needle.length + i);
-        if (subString === needle){
-            return i;
-        }
-    }
+//     for (let i = 0; i < haystack.length - needle.length; i++){
+//         let subString = haystack.slice(i, needle.length + i);
+//         if (subString === needle){
+//             return i;
+//         }
+//     }
     
-    return -1;
-};
+//     return -1;
+// };
 
-console.log(strStr("hello", "ll"));
+// ############################################################################################################
+
+// var validPalindrome = function(s) {
+//     let i = 0;
+//     let j = s.length - 1;
+//     while (i < j){
+//         if (s.charAt(i) !== s.charAt(j)){
+//             return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+//         }
+        
+//         i++;
+//         j--;
+//     }
+    
+//     return true;
+// };
+
+// function isPalindrome(string, i, j){
+//     while (i < j){
+//         if (string.charAt(i++) !== string.charAt(j--)) return false;
+//     }
+    
+//     return true;
+// }
