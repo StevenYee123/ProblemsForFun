@@ -1,3 +1,42 @@
+// var threeSum = function(nums) {
+//     let result = [];
+//     //Sorting plays a big role!
+//     nums.sort((a, b) => a - b); //Sorts nums from least to greatest
+//     let left = 0;
+//     let right = nums.length - 1;
+    
+//     for (let i = 0; i < nums.length; i++){
+//         // i is the current index we are starting from.
+//         // left is the next pointer
+//         // right is the third pointer
+        
+//         if (nums[i] === nums[i - 1]) continue; 
+        
+//         left = i + 1;
+//         right = nums.length - 1;
+//         let sum = 0;
+//         while (left < right){
+//             sum = nums[i] + nums[left] + nums[right];
+//             if (sum === 0){
+//                 result.push([nums[i], nums[left], nums[right]]);
+//                 left++;
+//                 right--;
+                
+//                 while (left < right && nums[left] === nums[left - 1]) left++;
+//                 while (right > left && nums[right] === nums[right + 1]) right++;
+//             } else if (sum > 0){
+//                 right--;
+//             } else if (sum < 0){
+//                 left++;
+//             }
+//         }
+//     }
+    
+//     return result;
+// };
+
+// ############################################################################################################
+
 // let num = 123;
 // const reversed = parseInt(String(Math.abs(num)).split("").reverse().join(""));
 // const reverse = (num) => {
@@ -59,7 +98,7 @@
     
 //     let pow = Math.abs(n);
     
-// 	let result = pow % 2 === 0 ? myPow(x*x, pow/2) : x * myPow(x*x, (pow-1) / 2);
+// 	   let result = pow % 2 === 0 ? myPow(x*x, pow/2) : x * myPow(x*x, (pow-1) / 2);
     
 //     return n < 0 ? 1 / result : result;
 // };
@@ -117,6 +156,8 @@ var maxProduct = function(nums) {
     return maxSoFar;
 }
 
+// ############################################################################################################
+
 var subsets = function(nums) {
     let result = [];
     dfs([], 0);
@@ -130,6 +171,8 @@ var subsets = function(nums) {
     
     return result;
 };
+
+// ############################################################################################################
 
 var plusOne = function(digits) {
     digits[digits.length - 1] += 1;
@@ -156,6 +199,8 @@ var plusOne = function(digits) {
     return digits;
 };
 
+// ############################################################################################################
+
 var merge = function(nums1, m, nums2, n) {
     let nums1Idx = 0;
     let nums2Idx = 0;
@@ -180,3 +225,10 @@ var merge = function(nums1, m, nums2, n) {
 };
 
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
+
+// ############################################################################################################
+
+var singleNumber = function(nums) {
+    //USE XOR
+    return nums.reduce((n, ele) => n ^ ele)
+};
