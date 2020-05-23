@@ -15,6 +15,8 @@ var swapPairs = function(head) {
     return temp.next;
 };
 
+// ############################################################################################################
+
 // var reverseList = function(head) {
 //     let prev = null;
     
@@ -38,4 +40,24 @@ var reverseList = function(head, prev = null) {
     head.next = prev;
     return next || head;
     
+};
+
+// ############################################################################################################
+
+var hasCycle = function(head) {
+    //We want to use a fast and slow pointer 
+    let fastPointer = head;
+    let slowPointer = head;
+    
+    //This means as long as the fast pointer does not reach the end of the linked list
+    while (fastPointer !== null && fastPointer.next !== null){
+        fastPointer = fastPointer.next.next;
+        slowPointer = slowPointer.next;
+        
+        if (fastPointer === slowPointer){
+            return true;
+        }
+    }
+    
+    return false;
 };
