@@ -224,11 +224,33 @@ var merge = function(nums1, m, nums2, n) {
     }
 };
 
-console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
+// console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
 
 // ############################################################################################################
 
 var singleNumber = function(nums) {
     //USE XOR
     return nums.reduce((n, ele) => n ^ ele)
+};
+
+// ############################################################################################################
+// Pascals Triangle
+var generate = function(numRows) {
+    if (numRows === 0) return [];
+    if (numRows === 1) return [[1]];
+    if (numRows === 2) return [[1], [1, 1]];
+    
+    let pascal = [[1], [1, 1]];
+    let index = 1;
+    while (pascal.length < numRows){
+        let newRow = [1];
+        for (let i = 0; i < pascal[index].length - 1; i++){
+            newRow.push(pascal[index][i] + pascal[index][i + 1]);
+        }
+        newRow.push(1);
+        pascal.push(newRow);
+        index++;
+    }
+    
+    return pascal;
 };
