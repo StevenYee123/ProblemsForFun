@@ -63,8 +63,23 @@ var hasCycle = function(head) {
 };
 
 // ############################################################################################################
-
+// Delete a node using only the node given. You are guaranteed that the node given is NOT the tail
 var deleteNode = function(node) {
     node.val = node.next.val;
     node.next = node.next.next;
+};
+
+// ############################################################################################################
+// Grab the middle node
+
+var middleNode = function(head) {
+    let fast = head;
+    let slow = head;
+    
+    while (fast !== null && fast.next !== null){
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    
+    return slow;
 };
