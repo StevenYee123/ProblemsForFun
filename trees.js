@@ -30,3 +30,40 @@ var isBalanced = function(root) {
     helper(root);
     return flag
 };
+
+// ############################################################################################################
+// Get the minimum depth of a binary tree
+
+var minDepth = function(root) {
+    if (root === null) return 0;
+    
+    //Using BFS, so we need a queue
+    let queue = [];
+    
+    //The idea is to find the first leaf node using BFS, which returns min depth. 
+    queue.push(root);
+    let depth = 0;
+    while (queue.lenth !== 0){
+        let numberOfNodes = queue.length;
+        while (numberOfNodes > 0){
+            let currentNode = queue.shift();
+            
+            if (currentNode.left === null && currentNode.right === null){
+                depth++;
+                return depth;
+            } 
+            
+            if (currentNode.left !== null){
+                queue.push(currentNode.left);
+            }
+            
+            if (currentNode.right !== null){
+                queue.push(currentNode.right);
+            }
+            
+            numberOfNodes--;
+        }
+        
+        depth++;
+    }
+};
