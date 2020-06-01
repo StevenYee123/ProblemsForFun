@@ -103,3 +103,36 @@ var strStr = function(haystack, needle) {
     
 //     return true;
 // }
+
+// ############################################################################################################
+
+var oneAway = (str1, str2) => {
+    let edits = 1;
+    let maxLen = Math.max(str1.length, str2.length);
+
+    let diff = Math.abs(str1.length - str2.length);
+
+    if (diff > edits) return false;
+
+    for (let i = 0, j = 0; i < maxLen || j < maxLen; i++, j++){
+        let c1 = str1[i];
+        let c2 = str2[j];
+
+        if (c1 !== c2){
+            edits--;
+        }
+
+        if (edits < 0){
+            return false;
+        }
+
+        //If an insert/remove is required
+        if (c1 === s2[j + 1]){
+            j++;
+        } else if (s1[i + 1] === s2[j]){
+            i++;
+        }
+    }
+
+    return true;
+}
