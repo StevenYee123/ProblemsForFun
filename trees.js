@@ -30,7 +30,7 @@ var isBalanced = function(root) {
     helper(root);
     return flag
 };
-
+//
 // ############################################################################################################
 // Get the minimum depth of a binary tree
 
