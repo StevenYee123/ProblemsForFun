@@ -1,5 +1,5 @@
 // ############################################################################################################
-// Check if a binary tree is balanced
+// Check if a binary tree is balanced 
 
 var isBalanced = function(root) {
     //handle case when root itself is null
