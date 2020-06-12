@@ -106,7 +106,7 @@ var strStr = function(haystack, needle) {
 
 // ############################################################################################################
 
-var oneAway = (str1, str2) => {
+let oneAway = (str1, str2) => {
     let edits = 1;
     let maxLen = Math.max(str1.length, str2.length);
 
@@ -136,3 +136,28 @@ var oneAway = (str1, str2) => {
 
     return true;
 }
+
+// ############################################################################################################
+//Group anagrams
+
+let groupAnagrams = function(strs) {
+    strs = strs.sort();
+    let mapping = {};
+    for (let i = 0; i < strs.length; i++) {
+        let str = strs[i];
+        let sorted = str.split('').sort().join('');
+        
+        if (mapping[sorted] === undefined) {
+            mapping[sorted] = [str];
+        } else {
+            mapping[sorted].push(str);
+        }
+    }
+    
+    let output = [];
+    for (let arr in mapping) {
+        output.push(mapping[arr]);
+    }
+    
+    return output;
+};
