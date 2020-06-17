@@ -67,3 +67,38 @@ var minDepth = function(root) {
         depth++;
     }
 };
+
+// ###############################################################################################
+// inOrderTraversal, both recursive AND iterative
+
+const inorderTraversalIter = (root) => {
+    let stack = [];
+    let output = [];
+    
+    while (root || stack.length){
+        if (root){
+            stack.push(root);
+            root = root.left;
+        } else {
+            root = stack.pop();
+            output.push(root.val);
+            root = root.right;
+        }
+    }
+    
+    return output;
+}
+
+const inOrderTraversalRecur = (root) => {
+    let output = [];
+
+    function inOrderTraversal(root){
+        if (!root) return;
+        inOrderTraversal(root.left);
+        output.push(root.val);
+        inOrderTraversal(root.right);
+    }
+
+    inOrderTraversal(root);
+    return output;
+}
