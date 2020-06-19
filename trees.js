@@ -40,7 +40,7 @@ var minDepth = function(root) {
     //Using BFS, so we need a queue
     let queue = [];
     
-    //The idea is to find the first leaf node using BFS, which returns min depth. 
+    //The idea is to find the first leaf node using BFS, which returns min depth.
     queue.push(root);
     let depth = 0;
     while (queue.lenth !== 0){
