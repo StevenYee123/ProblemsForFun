@@ -224,7 +224,6 @@ var merge = function(nums1, m, nums2, n) {
     }
 };
 
-// console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
 
 // ############################################################################################################
 
@@ -282,3 +281,18 @@ var sortColors = function(nums) {
         }
     }
 };
+
+var minimumTotal = function(triangle) {
+    let mins = [];
+    triangle.forEach((subArr) => {
+        mins.push(Math.min(...subArr));
+    });
+    
+    console.log(mins);
+
+    return mins.reduce((acc, ele) => {
+        return acc += ele;
+    })
+};
+
+console.log(minimumTotal([[-1], [2, 3], [1, -1, -3]]));

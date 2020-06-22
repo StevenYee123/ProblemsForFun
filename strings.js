@@ -160,3 +160,66 @@ let groupAnagrams = function(strs) {
     
     return output;
 };
+
+// ##########################################################################################################
+
+// Deletion Distance
+// The deletion distance of two strings is the minimum number of characters you need to delete in the two strings in order to get the same string. For instance, the deletion distance between "heat" and "hit" is 3:
+// By deleting 'e' and 'a' in "heat", and 'i' in "hit", we get the string "ht" in both cases.
+// We cannot get the same string from both strings by deleting 2 letters or fewer.
+// Given the strings str1 and str2, write an efficient function deletionDistance that returns the deletion distance between them. Explain how your function works, and analyze its time and space complexities.
+
+// input:  str1 = "dog", str2 = "frog"
+// output: 3
+// input:  str1 = "some", str2 = "some"
+// output: 0
+// input:  str1 = "some", str2 = "thing"
+// output: 9
+// input:  str1 = "", str2 = ""
+// output: 0
+
+// We could use a hash, to keep track of the letters from the FIRST word, and then iterate through the second word
+
+let deletionDistance = (str1, str2) => {
+    let word1 = {};
+    let word2 = {};
+    let count = 0;
+
+    for (let i = 0; i < str1.length; i++){
+        let currentChar = str1[i];
+        if (word1[currentChar]){
+            word1[currentChar] += 1;
+        } else {
+            word1[currentChar] = 1;
+        }
+    }
+
+    for (let i = 0; i < str2.length; i++){
+        let currentChar = str2[i];
+        if (word2[currentChar]){
+            word2[currentChar] += 1;
+        } else {
+            word2[currentChar] = 1;
+        }
+    }
+
+    for (currChar in word1){
+        if (word2[currChar]){
+            count += Math.abs(word1[currChar] - word2[currChar]);
+        } else {
+            count += word1[currChar];
+        }
+    }
+
+    for (currChar in word2){
+        if (word1[currChar]) {
+          count += Math.abs(word1[currChar] - word2[currChar]);
+        } else {
+          count += word2[currChar];
+        }
+    }
+
+    return count;
+}
+
+console.log(deletionDistance("", ""));
