@@ -32,6 +32,7 @@ var swapPairs = function(head) {
 
 // Recursive
 
+
 var reverseList = function(head, prev = null) {
     if (head === null) {
         return null;
@@ -40,6 +41,46 @@ var reverseList = function(head, prev = null) {
     head.next = prev;
     return next || head;
     
+};
+
+// ############################################################################################################
+// Controlled reverse linked list
+
+var reverseBetween = function(head, m, n) {
+    if (head === null) {
+        return null;
+    }
+    
+    let prev = null;
+    let current = head;
+    
+    while (m > 1){
+        prev = current;
+        current = current.next;
+        m--;
+        n--;
+    }
+    
+    let connection = prev;
+    let tail = current;
+    
+    while (n > 0){
+        let nextNode = current.next;
+        current.next = prev;
+        prev = current;
+        current = nextNode;
+        n--;
+    }
+    
+    if (connection !== null){
+        connection.next = prev;
+    } else {
+        head = prev;
+    }
+    
+    tail.next = current;
+    
+    return head;
 };
 
 // ############################################################################################################
