@@ -13,4 +13,4 @@ var swapPairs = function(head) {
     }
     
     return temp.next;
-};s
+};
