@@ -1,6 +1,6 @@
 var combinationSum = function(candidates, target, index = 0, current = [], combinations = []) {
     if (target <= 0) {
-        //Take care of the case that this is a correct combination of numbers
+        //Take care of the case that this is a correct combination of numbers  
         if (target === 0) combinations.push(current.slice());
         return
     };
