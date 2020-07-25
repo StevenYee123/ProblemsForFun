@@ -7,7 +7,7 @@ var merge = function(intervals) {
         curr = intervals[i];
         prev = intervals[i-1];
         if(curr[0] <= prev[1]){
-            intervals[i] = [Math.min(prev[0],curr[0]), Math.max(prev[1],curr[1])]
+            intervals[i] = [Math.min(prev[0],curr[0]), Math.max(prev[1],curr[1])];
             intervals.splice(i-1,1);
             i -= 1  // After merge, the arr become shorter
         }
