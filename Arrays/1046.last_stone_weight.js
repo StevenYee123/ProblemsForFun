@@ -13,7 +13,7 @@ var lastStoneWeight = function(stones) {
             stones[stones.length - 1] = max - secondMax;
             //Keep the reduced max
             let temp = stones.pop();
-            //Destroy the second stone completely 
+            //Destroy the second stone completely   
             stones.pop();
             let newIdx = findIdx(stones, temp);
             stones.splice(newIdx, 0, temp);
