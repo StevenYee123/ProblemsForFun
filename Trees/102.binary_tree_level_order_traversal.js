@@ -1,7 +1,7 @@
 const levelOrder = (root) => {
     if (!root) return [];
     
-    let result = [];
+    let result = [];  
     let queue = [root];
     
     while(queue.length){
