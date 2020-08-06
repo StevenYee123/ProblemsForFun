@@ -8,7 +8,7 @@ var reorderList = function (head) {
     node = node.next
   }
 
-  //Keep track of original stack length
+  //Keep track of original stack length  
   let len = stack.length
 
   //Reset head position
