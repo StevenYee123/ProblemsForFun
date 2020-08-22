@@ -10,7 +10,7 @@ var getIntersectionNode = function(headA, headB) {
         pointer1 = pointer1.next;
         pointer2 = pointer2.next;
         
-        //This handles the case that there is no intersection i.e. both are null.
+        //This handles the case that there is no intersection i.e. both are null.  
         if (pointer1 === pointer2){
             return pointer1;
         }
