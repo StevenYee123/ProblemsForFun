@@ -9,6 +9,6 @@ var longestPalindrome = function(s) {
     if (keys[char] % 2 == 0) ans += 2;
   }
     
-    //If the length is greater than our answer we can add one extra!
+    //If the length is greater than our answer we can add one extra 
   return s.length > ans ? ans + 1 : ans;
 };
