@@ -7,7 +7,7 @@ var permute = function(nums, set = [], answers = []) {
         permute(newNums, set, answers);
         //Very important to pop! Prevents the same index from being reused 
         set.pop();
-    }
+    }  
     
     return answers;
 };
