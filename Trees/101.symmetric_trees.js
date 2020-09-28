@@ -4,10 +4,10 @@ var isSymmetric = function(root) {
     return checkSymmetry(root.left, root.right);
 };
 
-const checkSymmetry = (leftSubTree, rightSubTree) => {
-    if(!leftSubTree || !rightSubTree) return leftSubTree === rightSubTree;
+const checkSymmetry = (leftNode, rightNode) => {
+    if(!leftNode || !rightNode) return leftNode === rightNode;
     
-    if(leftSubTree.val !== rightSubTree.val) return false;
+    if(leftNode.val !== rightNode.val) return false;
     
-    return checkSymmetry(leftSubTree.left, rightSubTree.right) && checkSymmetry(leftSubTree.right, rightSubTree.left);
+    return checkSymmetry(leftNode.left, rightNode.right) && checkSymmetry(leftNode.right, rightNode.left);
 }
