@@ -15,6 +15,7 @@ const flatten = (root) => {
     lastNode.right = null;
 };
 
+//We need the helper to populate the list using pre-order traversal
 const helper = (node, list) => {
     if(!node) return;
     
