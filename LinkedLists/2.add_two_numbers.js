@@ -8,7 +8,7 @@ var addTwoNumbers = function(l1, l2) {
         let l1Val = l1 ? l1.val : 0;
         let l2Val = l2 ? l2.val : 0;
         
-        //Get our sum, reset carryOver to 0
+        //Get our sum, reset carryOver to 0  
         let sum = carryOver + l1Val + l2Val;
         carryOver = 0;
         
