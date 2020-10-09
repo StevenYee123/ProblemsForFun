@@ -4,7 +4,7 @@ var isSymmetric = function(root) {
     return checkSymmetry(root.left, root.right);
 };
 
-const checkSymmetry = (leftNode, rightNode) => {
+const checkSymmetry = (leftNode, rightNode) => {  
     if(!leftNode || !rightNode) return leftNode === rightNode;
     
     if(leftNode.val !== rightNode.val) return false;
