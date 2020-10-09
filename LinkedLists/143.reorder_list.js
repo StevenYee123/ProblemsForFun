@@ -2,7 +2,7 @@ var reorderList = function (head) {
   let stack = [], node = head
   if (!node) return
 
-  //Populate the stack
+  //Populate the stack  
   while (node) {
     stack.push(node)
     node = node.next
