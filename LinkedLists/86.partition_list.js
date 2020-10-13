@@ -1,5 +1,5 @@
 var partition = function(head, x) {
-    let beforeHead = new ListNode(0);
+    let beforeHead = new ListNode(0);  
     let before = beforeHead;
     let afterHead = new ListNode(0);
     let after = afterHead;
