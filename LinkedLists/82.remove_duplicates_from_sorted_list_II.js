@@ -3,8 +3,9 @@ var deleteDuplicates = function (head) {
   dummy.next = head;
   let node = dummy;
   while (node.next) {
+    //This is to leave only distinct numbers
     if (node.next.next && node.next.val === node.next.next.val) {
-      let nonValNode = node.next.next.next;
+      let nonValNode = node.next.next.next;  
       while (nonValNode && nonValNode.val === node.next.val) {
         nonValNode = nonValNode.next;
       }
