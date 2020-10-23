@@ -4,7 +4,7 @@ var removeNthFromEnd = function(head, n) {
     let slow = dummy;
     let fast = dummy;  
     
-    //Here we start a fast pointer to index away from the end
+    //Here we start a fast pointer to index away from the end  
     for(let i = 0; i < n; i++){
         fast = fast.next;
     }

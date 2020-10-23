@@ -1,6 +1,6 @@
 
 
-// Best time to buy and sell stock
+// Best time to buy and sell stock  
 var maxProfit = function(prices) {
     var min = prices[0];  
     var max = 0;
