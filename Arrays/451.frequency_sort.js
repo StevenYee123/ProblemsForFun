@@ -9,7 +9,7 @@ var frequencySort = function(s) {
         }
     }
     
-    let sorted = Object.keys(charCount).sort((a, b) => charCount[b] - charCount[a]);
+    let sorted = Object.keys(charCount).sort((a, b) => charCount[b] - charCount[a]);  
     let res = "";
     
     for(let i = 0; i < sorted.length; i++){
