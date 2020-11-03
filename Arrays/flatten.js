@@ -6,7 +6,7 @@ const flatten = (arr) => {
         } else {
             result.push(arr[i]);
         }
-    }
+    }  
     
     return result;
 }
