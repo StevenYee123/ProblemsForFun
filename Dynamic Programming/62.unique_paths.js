@@ -7,5 +7,5 @@ var uniquePaths = function(m, n) {
         }
     }
     
-    return paths[n - 1];
+    return paths[n - 1];  
 };
