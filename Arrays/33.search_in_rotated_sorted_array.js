@@ -3,7 +3,7 @@ const search = (nums, target) => {
     let right = nums.length;
     
     while (left <= right){
-        let mid = Math.floor((left + right) / 2);  
+        let mid = Math.floor((left + right) / 2);
         if (nums[mid] === target) return mid;
         
         if (nums[left] <= nums[mid]){
