@@ -4,6 +4,7 @@ const levelOrder = (root) => {
     let result = [];  
     let queue = [root];
     
+    //We want to follow a format extremely similar to BFT
     while(queue.length){
         let size = queue.length;
         let currentLevel = [];
@@ -11,6 +12,7 @@ const levelOrder = (root) => {
             let current = queue.shift();
             currentLevel.push(current.val);
             
+            //Add the child nodes
             if (current.left !== null){
                 queue.push(current.left);
             }
