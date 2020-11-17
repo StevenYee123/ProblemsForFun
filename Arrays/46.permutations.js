@@ -1,6 +1,6 @@
 var permute = function(nums, set = [], answers = []) {
     if (!nums.length) answers.push([...set]);
-    
+    //Setup to choose each index to start from
     for(let i = 0; i < nums.length; i++){
         const newNums = nums.filter((n, index) => index !== i);
         set.push(nums[i]);
