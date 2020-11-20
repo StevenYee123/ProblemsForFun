@@ -1,16 +1,24 @@
 var merge = function(intervals) {
-    if(intervals.length < 2) return intervals; 
-    
-    intervals.sort((a,b) => a[0] - b[0]) //Arr have smaller element come first
-    
-    for(let i = 1; i < intervals.length; i += 1){
-        curr = intervals[i];
-        prev = intervals[i-1];
-        if(curr[0] <= prev[1]){
-            intervals[i] = [Math.min(prev[0],curr[0]), Math.max(prev[1],curr[1])];
-            intervals.splice(i-1,1);
-            i -= 1  // After merge, the arr become shorter
+    if(!intervals.length) return intervals;
+
+    //First we sort by the starting values
+    intervals.sort((a, b) => a[start] - b[start]);
+
+    //Initialize our answer with a starting interval
+    let prev = intervals[0];
+    let answer = [prev];
+
+    //Now we loop through and add accordingly
+    for(let i = 0; i < intervals.length; i++){
+        let curr = intervals[i];
+        //If they overlap then we change prev
+        if(prev[end] >= curr[start]){
+            prev[end] = Math.max(curr[end], prev[end]);
+        } else {
+            answer.push(curr);
+            prev = curr;
         }
     }
-    return intervals
+
+    return answer;
 };
