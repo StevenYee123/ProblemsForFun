@@ -1,7 +1,7 @@
 /**
  * Initialize your data structure here.
  */
-var HitCounter = function() {
+let HitCounter = function() {
     this.hitHash = {};
 };
 
