@@ -9,7 +9,7 @@ const verticalTraversal = (root) => {
             getNodeInfos(node.right, x + 1, y - 1); //traverse right
         }
     }
-    
+      
     getNodeInfos(root, 0, 0); //start off at the very beginning
     
     //Sort by following order of importance
