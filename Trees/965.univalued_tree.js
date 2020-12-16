@@ -9,5 +9,5 @@ var isUnivalTree = function(root) {
         return inOrderTraversal(node.left) && inOrderTraversal(node.right);
     }
     
-    return inOrderTraversal(root);
+    return inOrderTraversal(root);  
 };
