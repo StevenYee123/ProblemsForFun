@@ -1,7 +1,7 @@
 const verticalTraversal = (root) => {
     const nodeInfos = [];
     
-    //inOrder Traversal
+    //inOrder Traversal  
     function getNodeInfos(node, x, y){
         if(node){
             getNodeInfos(node.left, x - 1, y - 1); //traverse left
