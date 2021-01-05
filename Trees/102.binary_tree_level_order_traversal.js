@@ -4,7 +4,7 @@ const levelOrder = (root) => {
     let result = [];  
     let queue = [root];
     
-    //We want to follow a format extremely similar to BFT
+    //We want to follow a format extremely similar to BFT 
     while(queue.length){
         let size = queue.length;
         let currentLevel = [];
