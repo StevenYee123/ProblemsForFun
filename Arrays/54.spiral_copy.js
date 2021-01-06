@@ -1,7 +1,7 @@
 const spiralCopy = (nums) => {
     let topRow = 0;
     let bottomRow = nums.length - 1;
-    let leftCol = 0;
+    let leftCol = 0; 
     let rightCol = nums[0].length - 1;
     let direction = 0;
     let answer = [];
