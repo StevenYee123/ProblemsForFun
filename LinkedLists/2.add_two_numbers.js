@@ -2,7 +2,7 @@ var addTwoNumbers = function(l1, l2) {
     let head = new ListNode(0);
     let curr = head;
     let carryOver = 0;
-    
+      
     while(l1 || l2){
         //Gotta make sure our nodes are valid
         let l1Val = l1 ? l1.val : 0;
