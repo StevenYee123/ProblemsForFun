@@ -1,5 +1,5 @@
 var isValidBST = function(root) {
-    let check = [];
+    let check = [];  
     
     function inOrderTraversal(root){
         if (!root) return;
