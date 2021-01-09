@@ -1,7 +1,7 @@
 var lengthOfLongestSubstring = function(s) {
     let max = 0;
     let currentSize = 0;
-    let charTracker = {};
+    let charTracker = {};  
     for(let i = 0; i < s.length; i++){
         let curr = s[i];
         if(charTracker[curr] !== undefined){
