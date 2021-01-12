@@ -22,6 +22,19 @@ class MaxHeap{
             this.siftUp(parentIdx);
         }
     }
+
+    deleteMax(){
+        //Max will always be at idx 1
+        let max = this.array[1];
+        
+        //Take the very rightmost and bottom-most element and put it as the root
+        this.array[1] = this.array.pop();
+
+        //Call siftdown on the new root
+        this.siftDown(1);
+
+        return max;
+    }
 }
 
 let heap = new MaxHeap();
@@ -29,4 +42,4 @@ heap.insert(42);
 heap.insert(32);
 heap.insert(24);
 
-console.log(heap.array);
+// console.log(heap.array);
