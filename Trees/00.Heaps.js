@@ -35,11 +35,43 @@ class MaxHeap{
 
         return max;
     }
+
+    siftDown(idx){
+        let leftIdx = idx * 2;
+        let rightIdx = idx * 2 + 1;
+        let ary = this.array;
+        let leftVal = ary[leftIdx];
+        let rightVal = ary[rightIdx];
+        let val = ary[idx];
+
+        //This is to ensure this is the lowest point we can go, meaning we hit a leaf node!
+        if(!leftVal) leftVal = -Infinity; 
+        if(!rightVal) rightVal = -Infinity;
+
+        //Found a spot to put the val
+        if(val > leftVal && val > rightVal) return;
+
+        let swapIdx;
+        if(leftVal > rightVal){
+            swapIdx = leftIdx;
+        } else {
+            swapIdx = rightIdx;
+        }
+
+        //Once again perform a swap
+        [ary[swapIdx], ary[idx]] = [ary[idx], ary[swapIdx]];
+        this.siftDown(swapIdx);
+    }
 }
 
 let heap = new MaxHeap();
 heap.insert(42);
 heap.insert(32);
 heap.insert(24);
+heap.insert(100);
+heap.insert(50);
+heap.insert(27);
 
-// console.log(heap.array);
+console.log(heap.array);
+console.log(heap.deleteMax());
+console.log(heap.array);
