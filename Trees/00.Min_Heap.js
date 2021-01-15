@@ -15,7 +15,7 @@ class MinHeap{
         //Retrieve the parent idx
         let parentIdx = Math.floor(idx/2);
 
-        //If it is greater than our parent
+        //If it is less than our parent
         if(this.array[idx] < this.array[parentIdx]){
             //Swap the values!
             [this.array[idx], this.array[parentIdx]] = [this.array[parentIdx], this.array[idx]];
@@ -23,8 +23,8 @@ class MinHeap{
         }
     }
 
-    deleteMax(){
-        //Max will always be at idx 1
+    deleteMin(){
+        //Min will always be at idx 1
         let max = this.array[1];
         
         //Take the very rightmost and bottom-most element and put it as the root
@@ -73,5 +73,7 @@ heap.insert(50);
 heap.insert(27);
 
 console.log(heap.array);
-console.log(heap.deleteMax());
+console.log(heap.deleteMin());
+console.log(heap.array);
+console.log(heap.deleteMin());
 console.log(heap.array);
