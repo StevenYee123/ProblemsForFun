@@ -1,77 +1,109 @@
-class MaxHeap{
-    constructor(){
-        this.array = [null];
+class MaxHeap {
+  constructor(data = []) {
+    this.data = data;
+    this.comparator = (a, b) => b - a;
+    this.heapify();
+  }
+
+  // O(nlog(n)). In fact, O(n)
+  heapify() {
+    if (this.size() < 2) return;
+    for (let i = 1; i < this.size(); i++) {
+      this.bubbleUp(i);
     }
+  }
 
-    insert(val){
-        this.array.push(val);
+  // O(1)
+  peek() {
+    if (this.size() === 0) return null;
 
-        this.siftUp(this.array.length - 1);
+    return this.data[0];
+  }
+
+  // O(log(n))
+  offer(value) {
+    this.data.push(value);
+    this.bubbleUp(this.size() - 1);
+  }
+
+  // O(log(n))
+  poll() {
+    if (this.size() === 0) return null;
+    const result = this.data[0];
+    const last = this.data.pop();
+
+    if (this.size() !== 0) {
+      this.data[0] = last;
+      this.bubbleDown(0);
     }
+    return result;
+  }
 
-    siftUp(idx){
-        if(idx === 1) return;
-
-        //Retrieve the parent idx
-        let parentIdx = Math.floor(idx/2);
-
-        //If it is greater than our parent
-        if(this.array[idx] > this.array[parentIdx]){
-            //Swap the values!
-            [this.array[idx], this.array[parentIdx]] = [this.array[parentIdx], this.array[idx]];
-            this.siftUp(parentIdx);
-        }
+  // O(log(n))
+  bubbleUp(index) {
+    while (index > 0) {
+      const parentIndex = (index - 1) >> 1;
+      if (this.comparator(this.data[index], this.data[parentIndex]) < 0) {
+        this.swap(index, parentIndex);
+        index = parentIndex;
+      } else {
+        break;
+      }
     }
+  }
 
-    deleteMax(){
-        //Max will always be at idx 1
-        let max = this.array[1];
-        
-        //Take the very rightmost and bottom-most element and put it as the root
-        this.array[1] = this.array.pop();
+  // O(log(n))
+  bubbleDown(index) {
+    const lastIndex = this.size() - 1;
+    while (true) {
+      const leftIndex = index * 2 + 1;
+      const rightIndex = index * 2 + 2;
+      let findIndex = index;
+      if (
+        leftIndex <= lastIndex &&
+        this.comparator(this.data[leftIndex], this.data[findIndex]) < 0
+      ) {
+        findIndex = leftIndex;
+      }
 
-        //Call siftdown on the new root
-        this.siftDown(1);
+      if (
+        rightIndex <= lastIndex &&
+        this.comparator(this.data[rightIndex], this.data[findIndex]) < 0
+      ) {
+        findIndex = rightIndex;
+      }
 
-        return max;
+      if (index !== findIndex) {
+        this.swap(index, findIndex);
+        index = findIndex;
+      } else {
+        break;
+      }
     }
+  }
 
-    siftDown(idx){
-        let leftIdx = idx * 2;
-        let rightIdx = idx * 2 + 1;
-        let ary = this.array;
-        let leftVal = ary[leftIdx];
-        let rightVal = ary[rightIdx];
-        let val = ary[idx];
+  // O(1)
+  swap(index1, index2) {
+    [this.data[index1], this.data[index2]] = [
+      this.data[index2],
+      this.data[index1],
+    ];
+  }
 
-        //This is to ensure this is the lowest point we can go, meaning we hit a leaf node!
-        if(!leftVal) leftVal = -Infinity; 
-        if(!rightVal) rightVal = -Infinity;
-
-        //Found a spot to put the val
-        if(val > leftVal && val > rightVal) return;
-
-        let swapIdx;
-        if(leftVal > rightVal){
-            swapIdx = leftIdx;
-        } else {
-            swapIdx = rightIdx;
-        }
-
-        //Once again perform a swap
-        [ary[swapIdx], ary[idx]] = [ary[idx], ary[swapIdx]];
-        this.siftDown(swapIdx);
-    }
+  // O(1)
+  size() {
+    return this.data.length;
+  }
 }
 
 let heap = new MaxHeap();
-heap.insert(42);
-heap.insert(32);
-heap.insert(24);
-heap.insert(100);
-heap.insert(50);
-heap.insert(27);
+heap.offer(42);
+heap.offer(32);
+heap.offer(24);
+heap.offer(100);
+heap.offer(50);
+heap.offer(27);
 
-console.log(heap.array);
-console.log(heap.deleteMax());
-console.log(heap.array);
+console.log(heap.data);
+console.log(heap.poll());
+console.log(heap.data);
