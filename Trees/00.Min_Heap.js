@@ -63,10 +63,7 @@ class MinsHeap {
         findIndex = leftIndex;
       }
 
-      if (
-        rightIndex <= lastIndex &&
-        this.comparator(this.data[rightIndex], this.data[findIndex]) < 0
-      ) {
+      if (rightIndex <= lastIndex && this.comparator(this.data[rightIndex], this.data[findIndex]) < 0) {
         findIndex = rightIndex;
       }
 

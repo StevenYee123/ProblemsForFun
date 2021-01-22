@@ -59,17 +59,11 @@ class MaxHeap {
       const leftIndex = index * 2 + 1;
       const rightIndex = index * 2 + 2;
       let findIndex = index;
-      if (
-        leftIndex <= lastIndex &&
-        this.comparator(this.data[leftIndex], this.data[findIndex]) < 0
-      ) {
+      if (leftIndex <= lastIndex && this.comparator(this.data[leftIndex], this.data[findIndex]) < 0) {
         findIndex = leftIndex;
       }
 
-      if (
-        rightIndex <= lastIndex &&
-        this.comparator(this.data[rightIndex], this.data[findIndex]) < 0
-      ) {
+      if (rightIndex <= lastIndex && this.comparator(this.data[rightIndex], this.data[findIndex]) < 0) {
         findIndex = rightIndex;
       }
 
