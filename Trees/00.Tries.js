@@ -24,15 +24,39 @@ class Trie{
         }
     }
 
+    search(word, root = this.root){
+        let letter = word[0];
+
+        //If we are at the end of the word
+        if(word.length === 0){
+            if(root.isTerminal){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //If the letter exists as a child
+        if(letter in root.children){
+            return this.search(word.slice(1), root.children[letter]);
+        } else {
+            return false;
+        }
+    }
+
     print(root = this.root){
         for(let letter in root.children){
             console.log(letter);
             this.print(root.children[letter]);
         }
     }
+
+
 }
 
 let myTrie = new Trie();
 myTrie.insert("ten");
 myTrie.insert("tea");
-myTrie.print();
+console.log(myTrie.search("ten")); //true
+console.log(myTrie.search("te")); //false
+console.log(myTrie.search("tex")); //false;
