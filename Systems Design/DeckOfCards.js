@@ -1,18 +1,39 @@
-class Deck{
-    constructor(){
+class Deck {
+    constructor() {
+        this.deck = [];
+        this.reset();
+        this.shuffle();
+    }
+
+    reset() {
         this.deck = [];
 
-        //Just construct the deck right away
-        const suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
-        const values = ["Ace", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+        const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
+        const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
 
-        for(let suit of suits){
-            for(let val of values){
-                this.deck.push(`${val} of ${suit}`);
+        for (let suit in suits) {
+            for (let value in values) {
+            this.deck.push(`${values[value]} of ${suits[suit]}`);
             }
         }
     }
+
+    shuffle() {
+        const deck = this.deck;
+        let m = deck.length,
+            i;
+
+        while (m) {
+            i = Math.floor(Math.random() * m--);
+
+            [deck[m], deck[i]] = [deck[i], deck[m]];
+        }
+    }
+
+    deal() {
+        return this.deck.pop();
+    }
 }
 
-let deck = new Deck();
-console.log(deck);
+const deck1 = new Deck();
+console.log(deck1.deck);
