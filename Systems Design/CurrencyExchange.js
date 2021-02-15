@@ -7,8 +7,17 @@ class CurrencyExchange{
         if(!top in this.graph) this.graph[top] = {};
         if(!bottom in this.graph) this.graph[bottom] = {};
 
-        this.graph[top][bottom] = quotient;
-        this.graph[bottom][top] = 1/quotient;
+        this.graph[top][bottom] = rate;
+        this.graph[bottom][top] = 1/rate;
+    }
+
+    getRate(top, bottom){
+        let result;
+        if(top in this.graph && top === bottom){
+            result = this.graph[top];
+        } else {
+            result = this.findRateBFS(top, bottom);
+        }
     }
 
     findRateBFS(numerator, target){
