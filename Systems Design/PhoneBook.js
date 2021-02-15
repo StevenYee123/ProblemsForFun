@@ -49,4 +49,4 @@ T.add("James", 4483455747);
 T.add("Joey", 12093091302);
 T.add("Samantha", 4454443947);
 T.add("Susy", 9382489284);
-T.listContacts("J");
+T.listContacts("S");
