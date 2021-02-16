@@ -18,6 +18,8 @@ class CurrencyExchange{
         } else {
             result = this.findRateBFS(top, bottom);
         }
+
+        return result;
     }
 
     findRateBFS(numerator, target){
