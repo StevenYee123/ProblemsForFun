@@ -14,7 +14,7 @@ class CurrencyExchange{
     getRate(top, bottom){
         let result;
         if(top in this.graph && top === bottom){
-            result = this.graph[top];
+            result = this.graph[top][top];
         } else {
             result = this.findRateBFS(top, bottom);
         }
